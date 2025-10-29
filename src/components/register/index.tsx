@@ -66,35 +66,47 @@ export function Register() {
                 />
 
                 <Text style={styles.label}>Senha</Text>
-                <TextInput
-                    style={styles.input}
-                    value={password}
-                    onChangeText={setPassword}
-                    placeholder="Senha"
-                    secureTextEntry={!showPassword}
-                />
+        <View style={styles.passwordContainer}>
+            <TextInput
+                style={styles.passwordInput}
+                value={password}
+                onChangeText={setPassword}
+                placeholder="Senha"
+                secureTextEntry={!showPassword}
+                
+            />
+        <TouchableOpacity
+                onPress={() => setShowPassword(!showPassword)}
+                style={styles.togglePassword}
+           >
+        <Ionicons
+                name={showPassword ? "eye" : "eye-off"}
+                size={20}
+                color="#333"
+            />
+        </TouchableOpacity>
+           </View>
 
-                <Text style={styles.label}>Confirmar Senha</Text>
-                <TextInput
-                    style={styles.input}
-                    value={confirmPassword}
-                    onChangeText={setConfirmPassword}
-                    placeholder="Confirmar Senha"
-                    secureTextEntry={!showPassword}
-                />
-
-                <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-                    <Text style={styles.togglePassword}>
-                        {showPassword ? "Ocultar Senha" : " Mostrar Senha"}
-
-                        <Ionicons 
-                        name={showPassword ? "eye" : "eye-off"}
-                            size={20}
-                            color="#333"
-                        />
-                    </Text>
-                </TouchableOpacity>
-
+        <Text style={styles.label}>Confirmar Senha</Text>
+           <View style={styles.passwordContainer}>
+             <TextInput
+              style={styles.passwordInput}
+              value={confirmPassword}
+              onChangeText={setConfirmPassword}
+              placeholder="Confirmar Senha"
+              secureTextEntry={!showPassword}
+           />
+        <TouchableOpacity
+              onPress={() => setShowPassword(!showPassword)}
+              style={styles.togglePassword}
+            >
+        <Ionicons
+              name={showPassword ? "eye" : "eye-off"}
+              size={20}
+              color="#333"
+           />
+       </TouchableOpacity>
+            </View>
                 {registerError ? <Text style={styles.error}>{registerError}</Text> : null}
 
                 <TouchableOpacity

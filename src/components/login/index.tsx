@@ -3,16 +3,16 @@ import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import {
-    ActivityIndicator,
-    Alert,
-    KeyboardAvoidingView,
-    Platform,
-    SafeAreaView,
-    ScrollView,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  ActivityIndicator,
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import { styles } from "./styles";
  
@@ -128,7 +128,11 @@ export function Login() {
               {loading ? (
                 <ActivityIndicator color="#fff" />
               ) : (
+                <TouchableOpacity onPress={() => router.push("/(auth)/skills")}>
                 <Text style={styles.signInButtonText}>Entrar</Text>
+
+
+                </TouchableOpacity>
               )}
             </TouchableOpacity>
  

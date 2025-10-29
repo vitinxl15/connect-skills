@@ -94,7 +94,7 @@ export const styles = StyleSheet.create({
     textAlign: "center",
   },
   signInButton: {
-    backgroundColor: "#111827",
+    backgroundColor: "#3b82f6",
     paddingVertical: 16,
     borderRadius: 8,
     width: "100%",

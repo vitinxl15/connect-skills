@@ -1,4 +1,4 @@
 import { Login } from "@/components/login";
-export default function AuthIndex() {
+export default function AuthLogin() {
     return <Login />;   
 }
