@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Text, View } from 'react-native';
 import Swiper from 'react-native-deck-swiper';
 import { styles } from './styles';
+
  
 const UserCard = () => ( 
   <View style={styles.card}> 

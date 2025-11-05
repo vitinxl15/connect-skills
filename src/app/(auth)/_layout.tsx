@@ -7,7 +7,7 @@ export default function AuthLayout(){
             headerShown: false
         }} 
         >
-            <Stack.Screen name="login" options={{title: "Entrar"}} />
+            <Stack.Screen name="index" options={{title: "Entrar"}} />
             <Stack.Screen name="register" options={{title: "Cadastro"}} />
             
         </Stack>
