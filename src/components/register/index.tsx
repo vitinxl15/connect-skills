@@ -1,49 +1,54 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import { ActivityIndicator, Alert, Text, TextInput, TouchableOpacity, View } from "react-native";
+
+import { ActivityIndicator, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { supabase } from "../../lib/supabase";
 import { styles } from "./styles";
 
 
 export function Register() {
-    const router = useRouter();
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const [showPassword, setShowPassword] = useState(false);
-    const [loading, setLoading] = useState(false);
-    const [registerError, setRegisterError] = useState("");
-
-    const canSubmit = email.trim() !== "" && password.trim() !== "" && confirmPassword.trim() !== "" && !loading;
-
-    const handleRegister = async () => {
-        if (name.trim() === "") {
-            setName("");
-            return;
-        }
-        
-        if (password !== confirmPassword) {
-            setRegisterError("As senhas não coincidem!");
-            return;
-        }
-        try {
-            setLoading(true);
-            setRegisterError("");
-            await new Promise((r) => setTimeout(r, 600));
-
-            if (email.toLowerCase() === "aluno@teste.com" && password === "123@senac") {
-                Alert.alert("Cadastro realizado com sucesso!");
-                router.push("/(auth)/login");
-            } else {
-                setRegisterError("E-mail ou senha inválidos!");
-            }
-        } finally {
-            setLoading(false);
-        }
-        
-    };
+      const router = useRouter();
+ 
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const [confirmarSenha, setConfirmarSenha] = useState("");
+ 
+  const [showSenha, setShowSenha] = useState(false);
+  const [showConfirmar, setShowConfirmar] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [erroGlobal, setErroGlobal] = useState("");
+ 
+  const canSubmit =
+    nome.trim() &&
+    email.trim() &&
+    senha.length >= 6 &&
+    confirmarSenha === senha &&
+    !loading;
+ 
+  const handleSignUp = async () => {
+    try {
+      setLoading(true);
+      setErroGlobal("");
+      const {data, error} = await supabase.auth.signUp({
+        email: email.trim().toLowerCase(),
+        password: senha,
+        options: {
+            data: {name: nome.trim()}
+        },
+      });
+      if (error) {
+        setErroGlobal(error.message || "Falha ao cadastrar. Tente novamente!");
+      }
+      router.replace("./(auth)/index");
+    } catch {
+      setErroGlobal("Falha ao tentar cadastrar. Tente novamente.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
     return (
         <SafeAreaView style={styles.container}>
@@ -69,18 +74,18 @@ export function Register() {
         <View style={styles.passwordContainer}>
             <TextInput
                 style={styles.passwordInput}
-                value={password}
-                onChangeText={setPassword}
+                value={senha}
+                onChangeText={setSenha}
                 placeholder="Senha"
-                secureTextEntry={!showPassword}
+                secureTextEntry={!showSenha}
                 
             />
         <TouchableOpacity
-                onPress={() => setShowPassword(!showPassword)}
+                onPress={() => setShowSenha(!showSenha)}
                 style={styles.togglePassword}
            >
         <Ionicons
-                name={showPassword ? "eye" : "eye-off"}
+                name={showSenha ? "eye" : "eye-off"}
                 size={20}
                 color="#333"
             />
@@ -91,27 +96,27 @@ export function Register() {
            <View style={styles.passwordContainer}>
              <TextInput
               style={styles.passwordInput}
-              value={confirmPassword}
-              onChangeText={setConfirmPassword}
+              value={confirmarSenha}
+              onChangeText={setConfirmarSenha}
               placeholder="Confirmar Senha"
-              secureTextEntry={!showPassword}
+              secureTextEntry={!showConfirmar}
            />
         <TouchableOpacity
-              onPress={() => setShowPassword(!showPassword)}
+              onPress={() => setShowConfirmar(!showConfirmar)}
               style={styles.togglePassword}
             >
         <Ionicons
-              name={showPassword ? "eye" : "eye-off"}
+              name={showConfirmar ? "eye" : "eye-off"}
               size={20}
               color="#333"
            />
        </TouchableOpacity>
             </View>
-                {registerError ? <Text style={styles.error}>{registerError}</Text> : null}
+                {erroGlobal ? <Text style={styles.error}>{erroGlobal}</Text> : null}
 
                 <TouchableOpacity
                     style={[styles.button, !canSubmit && styles.buttonDisabled]}
-                    onPress={handleRegister}
+                    onPress={handleSignUp}
                     disabled={!canSubmit}
                 >
                     {loading ? (

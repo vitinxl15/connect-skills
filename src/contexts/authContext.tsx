@@ -1,37 +1,29 @@
-import { Session, User, } from "@supabase/supabase-js";
+import { Session, User } from "@supabase/supabase-js";
 import { createContext, useContext, useState } from "react";
-
 type AuthContextType = {
     user: User | null;
     session: Session | null;
-    setAuth: (payload:{
+    setAuth: (payload: {
         user: User | null;
-        session: Session | null;
+        session: Session | null 
     }) => void;
 };
-
-const AuthContext = createContext<AuthContextType>({
+const AuthContext = createContext<AuthContextType> ({
     user: null,
     session: null,
     setAuth: () => {},
 });
-
-export function AuthProvider({children} : {children: React.ReactNode}) {
+export function AuthProvider({ children } : { children: React.ReactNode }) {
     const [user, setUser] = useState<User | null>(null);
     const [session, setSession] = useState<Session | null>(null);
-
-    const  setAuth = (payload: {user: User | null; session: Session | null;}) => {
+    const setAuth = (payload: { user: User | null; session: Session | null}) => {
         setUser(payload.user);
         setSession(payload.session);
     };
-
-   return (
-       <AuthContext.Provider value ={{user, session, setAuth}}>
-            {children}
+    return (
+        <AuthContext.Provider value={{user, session, setAuth}}>
+            {children} 
         </AuthContext.Provider>
-   );
-    
-   
+    );
 }
-
-export const userAuth = () => useContext(AuthContext);
+export const useAuth = () => useContext(AuthContext);

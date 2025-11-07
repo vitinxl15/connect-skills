@@ -1,13 +1,62 @@
-/*Stack: container de navegação (baseado em empilhamento de telas ) => push
-/replace/back
-router.push("/rota") => empilha uma nova tela por cima da atual => usuario navega para a próxima tela,
-mas ainda deve poder voltar para a tela anterior
-router.replace("/rota") => substitui a tela atual (nao empilha) => quando voce nao quer permitir
-voltar,como apos o login (apos se autenticar)
-router.back() => volta para a tela anterior*/ 
-import { Slot } from "expo-router";
+import { AuthProvider, useAuth } from "@/contexts/authContext";
+import { supabase } from "@/lib/supabase";
+import { Stack, useRouter } from "expo-router";
+import { useEffect } from "react";
 
 
-export default function RootLayout() {
-  return <Slot />;
+
+
+
+function MainLayout() {
+  const router = useRouter();
+  const {setAuth} = useAuth();
+
+
+  useEffect(()=> {
+    supabase.auth.getSession().then(( {data:{session}}) => {
+      setAuth({user: session?.user ?? null, session: session ?? null});
+      if(!session?.user) {
+        router.replace("./(tabs)");
+    }
+    else {
+      router.replace("./(auth)/index");
+    }
+    });
+  
+
+  const {data: sup } = supabase.auth.onAuthStateChange((_event,session)=> {
+    setAuth({user: session?.user ?? null, session: session ?? null});
+    if(!session?.user) {
+      router.replace("./(tabs)");
+    }
+    else {
+      router.replace("./(auth)/index");
+    }
+  });
+  return () =>{
+    sup.subscription.unsubscribe();
+
+  };
+}, []);
+
+return (
+  <Stack screenOptions={{headerShown: false}}>
+    {/*SplashScreen */}
+    <Stack.Screen name="(auth)" />
+    <Stack.Screen name="(tabs)" />
+
+  </Stack>
+);
+
+}
+
+
+
+
+export default function Root() {
+  return (
+  <AuthProvider>
+  <MainLayout />
+  </AuthProvider>
+  );
 }

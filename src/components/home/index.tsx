@@ -20,7 +20,7 @@ export function HomePage() {
  
   return ( 
     <View style={styles.container}> 
-      <Swiper 
+      <Swiper
         ref={swiperRef} 
         cards={usuarios} 
         renderCard={() => <UserCard />} 
