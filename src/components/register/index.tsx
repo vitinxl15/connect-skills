@@ -126,7 +126,7 @@ export function Register() {
                     )}
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => router.push("/(auth)/login")}>
+                <TouchableOpacity onPress={() => router.push("./(auth)/index")}>
                     <Text style={styles.backText}>Voltar para Login</Text>
                 </TouchableOpacity>
             </View>

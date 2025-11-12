@@ -11,7 +11,7 @@ const UserCard = () => (
   </View> 
 ); 
  
-export function HomePage() { 
+export function Home() { 
   const [usuarios] = useState([{}, {}, {}]); 
   const swiperRef = useRef(null); 
  

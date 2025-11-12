@@ -30,7 +30,7 @@ export function Skills() {
             <View>
                 <Text style={styles.title}>O que deseja ensinar</Text>
                 <SelectList
-                    setSelected={setSelectedTeach}
+                    setSelected={setSelectedTeach} 
                     placeholder="Selecione uma habilidade para ser ensinada"
                     data={data}
                     save="value"
@@ -52,7 +52,7 @@ export function Skills() {
             
 
 
-            <TouchableOpacity onPress={() => router.push("/(auth)/login")}>
+            <TouchableOpacity onPress={() => router.push("./(auth)/index")}>
                 <Text style={styles.button}>Voltar</Text>
             </TouchableOpacity>
         </View>
