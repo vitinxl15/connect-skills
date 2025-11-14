@@ -2,6 +2,7 @@ import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import { ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SelectList } from "react-native-dropdown-select-list";
+
  
 export  function ProfileScreen() {
   const [nome, setNome] = useState("");
@@ -36,7 +37,7 @@ export  function ProfileScreen() {
             marginBottom: 10,
           }}
         >
-          <Text style={{ fontSize: 28, fontWeight: "bold", color: "#555" }}>Joao Vitor</Text>
+          <Text style={{ fontSize: 28, fontWeight: "bold", color: "#555" }}>JV</Text>
         </View>
         <Text style={{ fontSize: 24, fontWeight: "bold", color: "#333" }}>Seu Perfil</Text>
         <Text style={{ fontSize: 14, color: "#777" }}>Gerencie suas informações pessoais</Text>
@@ -98,7 +99,7 @@ export  function ProfileScreen() {
         >
           <TextInput
             style={{ flex: 1, padding: 12, fontSize: 16 }}
-            placeholder="********"
+            placeholder="senha"
             secureTextEntry={!mostrarSenha}
             value={senha}
             onChangeText={setSenha}
@@ -144,7 +145,10 @@ export  function ProfileScreen() {
         onPress={() => console.log("Dados salvos:", { nome, email, habilidade })}
       >
         <Text style={{ color: "#fff", fontSize: 16, fontWeight: "bold" }}>Salvar alterações</Text>
+        
+        
       </TouchableOpacity>
+      
     </ScrollView>
   );
 }

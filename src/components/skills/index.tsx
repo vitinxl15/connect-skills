@@ -1,8 +1,10 @@
+import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { SelectList } from 'react-native-dropdown-select-list';
 import { styles } from './styles';
+
 
 
 
@@ -49,11 +51,9 @@ export function Skills() {
                     boxStyles={styles.selectList}
                 />
             </View>
-            
-
-
-            <TouchableOpacity onPress={() => router.push("./(auth)/index")}>
-                <Text style={styles.button}>Voltar</Text>
+           <TouchableOpacity style={styles.backToLogin} onPress={() => router.back()}>
+              <Ionicons name="arrow-back" size={16} color="#111827" />
+              <Text style={styles.backToLoginText}>Voltar para login</Text>
             </TouchableOpacity>
         </View>
 

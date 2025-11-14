@@ -38,4 +38,16 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3,
   },
+   backToLogin: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 6,
+    marginTop: 18,
+  },
+  backToLoginText: {
+    color: "#111827",
+    fontSize: 14,
+    fontWeight: "600",
+  },
 });

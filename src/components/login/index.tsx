@@ -128,7 +128,7 @@ export function Login() {
               {loading ? (
                 <ActivityIndicator color="#fff" />
               ) : (
-                <TouchableOpacity onPress={() => router.push("./(auth)/skills")}>
+                <TouchableOpacity onPress={() => router.push("/(tabs)/home")}>
                 <Text style={styles.signInButtonText}>Entrar</Text>
 
 
@@ -147,7 +147,7 @@ export function Login() {
             </View>
  
             {/* Ações secundárias (opcional) */}
-            <TouchableOpacity onPress={() => router.push("./(auth)/register")}>
+            <TouchableOpacity onPress={() => router.push("/(auth)/register")}>
               <Text style={styles.signUpText}>
                 Não possui uma conta? <Text style={styles.signUpLink}>Cadastre-se</Text>
               </Text>
