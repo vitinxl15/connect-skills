@@ -57,7 +57,7 @@ export function Register() {
         style={styles.keyboardAvoiding}
       >
         <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
-          {/* Cabeçalho */}
+          
           <View style={styles.header}>
             <Text style={styles.brand}>Connect Skills</Text>
             <Text style={styles.title}>Criar conta</Text>
@@ -66,9 +66,9 @@ export function Register() {
             </Text>
           </View>
 
-          {/* Card */}
+          
           <View style={styles.card}>
-            {/* Nome */}
+            
             <View style={styles.inputGroup}>
               <Text style={styles.label}>Nome</Text>
               <View style={styles.inputWithIcon}>
@@ -84,7 +84,7 @@ export function Register() {
               </View>
             </View>
 
-            {/* Email */}
+            
             <View style={styles.inputGroup}>
               <Text style={styles.label}>E-mail</Text>
               <View style={styles.inputWithIcon}>
@@ -101,7 +101,7 @@ export function Register() {
               </View>
             </View>
 
-            {/* Senha */}
+            
             <View style={styles.inputGroup}>
               <View style={styles.labelRow}>
                 <Text style={styles.label}>Senha</Text>
@@ -134,7 +134,7 @@ export function Register() {
               </View>
             </View>
 
-            {/* Confirmar senha */}
+            
             <View style={styles.inputGroup}>
               <Text style={styles.label}>Confirmar senha</Text>
               <View style={styles.inputWithIcon}>
@@ -163,7 +163,7 @@ export function Register() {
               </View>
             </View>
 
-            {/* Botão Cadastrar */}
+            
             <TouchableOpacity
               onPress={handleSignUp}
               disabled={!canSubmit}
@@ -177,17 +177,17 @@ export function Register() {
               )}
             </TouchableOpacity>
 
-            {/* Erro global */}
+            
             {!!erroGlobal && <Text style={styles.loginError}>{erroGlobal}</Text>}
 
-            {/* Voltar para Login */}
+            
             <TouchableOpacity style={styles.backToLogin} onPress={() => router.back()}>
               <Ionicons name="arrow-back" size={16} color="#111827" />
               <Text style={styles.backToLoginText}>Voltar para login</Text>
             </TouchableOpacity>
           </View>
 
-          {/* Rodapézinho */}
+         
           <Text style={styles.footerNote}>© {new Date().getFullYear()} Connect Skills</Text>
         </ScrollView>
       </KeyboardAvoidingView>
