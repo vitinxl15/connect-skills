@@ -3,7 +3,7 @@ import { Slot } from "expo-router";
 import { View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-/*Redicionamento automático de acordo com a sessão*/
+
 const MainLayout = () => {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>

@@ -32,19 +32,21 @@ export function Register() {
     try {
       setLoading(true);
       setErroGlobal("");
-      const {data, error} = await supabase.auth.signUp({
-        email: email.trim().toLowerCase(),
+      const { data, error } = await supabase.auth.signUp({
+        email: email,
         password: senha,
         options: {
-            data: {name: nome.trim()}
+          data: { nome: nome.trim() }
         },
       });
       if (error) {
-        setErroGlobal(error.message || "Falha ao cadastrar. Tente novamente!");
+        setErroGlobal(error.message || "Falha ao cadastrar. Verifique a validação dos campos!");
+        return;
       }
-      router.replace("/(auth)");
-    } catch {
-      setErroGlobal("Falha ao tentar cadastrar. Tente novamente.");
+      router.replace("/(auth)"); // Alterar redirecionamento para /(auth)/datauser
+      return data;
+    } catch (e: any) {
+      setErroGlobal(e.message || "Falha ao cadastrar. Tente novamente.");
     } finally {
       setLoading(false);
     }

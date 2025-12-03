@@ -1,6 +1,8 @@
 // ./src/components/login/index.tsx
+import { supabase } from "@/lib/supabase";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+
 import { useState } from "react";
 import {
   ActivityIndicator,
@@ -30,21 +32,22 @@ export function Login() {
   // Mesmo critério que você já usava
   const canSubmit = email.trim() !== "" && password.trim() !== "" && !loading;
  
-  const handleSignIn = async () => {
+ const handleSignIn = async () => {
     try {
       setLoading(true);
       setLoginError("");
- 
-   
-      await new Promise((r) => setTimeout(r, 600));
- 
-      if (email.toLowerCase() === "aluno@teste.com" && password === "123@senac") {
-        console.log("Login simulado com sucesso!");
-        // Quando quiser, pode redirecionar:
-        // router.replace("/(tabs)");
-      } else {
-        setLoginError("E-mail ou senha inválidos!");
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) {
+        setLoginError(error.message || "E-mail ou senha inválidos!");
       }
+      // Login com sucesso
+      router.replace("./(tabs)"); {/* aqui estava: router.replace(./(tabs)");*/ }
+    } catch (e: any) {
+      setLoginError(e.message || "Não foi possível logar. Tente novamente.");
     } finally {
       setLoading(false);
     }
