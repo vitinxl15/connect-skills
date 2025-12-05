@@ -43,7 +43,7 @@ export function Register() {
         setErroGlobal(error.message || "Falha ao cadastrar. Verifique a validação dos campos!");
         return;
       }
-      router.replace("/(auth)"); // Alterar redirecionamento para /(auth)/datauser
+      router.replace("/(auth)/datauser"); // Alterar redirecionamento para /(auth)/datauser
       return data;
     } catch (e: any) {
       setErroGlobal(e.message || "Falha ao cadastrar. Tente novamente.");
@@ -175,7 +175,10 @@ export function Register() {
               {loading ? (
                 <ActivityIndicator color="#fff" />
               ) : (
-                <Text style={styles.primaryButtonText}>Criar conta</Text>
+              
+                <Text style={styles.primaryButtonText}>Avançar</Text>
+                
+                
               )}
             </TouchableOpacity>
 
@@ -189,7 +192,6 @@ export function Register() {
             </TouchableOpacity>
           </View>
 
-         
           <Text style={styles.footerNote}>© {new Date().getFullYear()} Connect Skills</Text>
         </ScrollView>
       </KeyboardAvoidingView>

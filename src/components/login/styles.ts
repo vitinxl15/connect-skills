@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 24,
-    backgroundColor: "#ffffff",
+    backgroundColor: "#DFA46A",
   },
   header: {
     alignItems: "center",
@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 16,
-    color: "#6b7280",
+    color: "#000000ff",
     marginTop: 8,
     textAlign: "center",
   },
@@ -39,7 +39,7 @@ export const styles = StyleSheet.create({
   label: {
     fontSize: 14,
     fontWeight: "500",
-    color: "#374151",
+    color: "#000000ff",
     marginBottom: 8,
   },
   input: {
@@ -71,7 +71,7 @@ export const styles = StyleSheet.create({
   forgotPassword: {
     fontSize: 14,
     fontWeight: "500",
-    color: "#4b5563",
+    color: "#000000ff",
     textAlign: "right",
     marginTop: 5,
   },
@@ -94,7 +94,7 @@ export const styles = StyleSheet.create({
     textAlign: "center",
   },
   signInButton: {
-    backgroundColor: "#3b82f6",
+    backgroundColor: "#6A3B18",
     paddingVertical: 16,
     borderRadius: 8,
     width: "100%",
@@ -123,7 +123,7 @@ export const styles = StyleSheet.create({
   dividerText: {
     marginHorizontal: 16,
     fontSize: 14,
-    color: "#6b7280",
+    color: "#000000ff",
   },
   socialLoginContainer: {
     flexDirection: "row",
@@ -141,7 +141,7 @@ export const styles = StyleSheet.create({
   signUpText: {
     marginTop: 40,
     fontSize: 14,
-    color: "#6b7280",
+    color: "#000000ff",
     textAlign: "center",
   },
   signUpLink: {

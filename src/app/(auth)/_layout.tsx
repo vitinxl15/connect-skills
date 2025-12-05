@@ -8,6 +8,7 @@ export default function AuthLayout() {
       <Stack.Screen name="index" />
       <Stack.Screen name="register" />
       <Stack.Screen name="datauser" />
+      
     </Stack>
   );
 }

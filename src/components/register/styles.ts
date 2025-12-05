@@ -10,18 +10,18 @@ export const styles = StyleSheet.create({
     paddingHorizontal: width * 0.08,
     paddingTop: 16,
     paddingBottom: width * 0.2,
-    backgroundColor: "#ffffff",
+    backgroundColor: "#DFA46A",
   },
 
-  // Header
+  
   header: { alignItems: "center", marginVertical: width * 0.1},
-  brand: { fontSize: 14, color: "#6b7280", letterSpacing: 1, textTransform: "uppercase" as const },
+  brand: { fontSize: 14, color: "#060607ff", letterSpacing: 1, textTransform: "uppercase" as const },
   title: { fontSize: 28, fontWeight: "800", color: "#111827", marginTop: 4 },
-  subtitle: { fontSize: 14, color: "#6b7280", marginTop: 6, textAlign: "center" },
+  subtitle: { fontSize: 14, color: "#000000ff", marginTop: 6, textAlign: "center" },
 
-  // Card/container
+
   card: {
-    backgroundColor: "#ffffff",
+    backgroundColor: "#F2D6B3",
     borderRadius: 16,
     padding: 18,
     marginTop: 12,
@@ -35,10 +35,10 @@ export const styles = StyleSheet.create({
   form: { width: "100%" },
   inputGroup: { marginBottom: 16 },
 
-  label: { fontSize: 13, fontWeight: "600", color: "#374151", marginBottom: 8 },
+  label: { fontSize: 13, fontWeight: "600", color: "#08090aff", marginBottom: 8 },
   labelRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
 
-  hint: { fontSize: 12, color: "#9ca3af" },
+  hint: { fontSize: 12, color: "#000000ff" },
 
   inputWithIcon: {
     flexDirection: "row",
@@ -62,7 +62,7 @@ export const styles = StyleSheet.create({
   inputError: { borderColor: "#dc2626" },
   fieldError: { color: "#dc2626", fontSize: 12, marginTop: 6 },
 
-  // Botões
+  
   primaryButton: {
     backgroundColor: "#111827",
     paddingVertical: 14,
@@ -70,7 +70,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 16,
   },
-  primaryButtonDisabled: { backgroundColor: "#d1d5db" },
+  primaryButtonDisabled: { backgroundColor: "#6A3B18" },
   primaryButtonText: { color: "#fff", fontSize: 16, fontWeight: "700" },
 
   loginError: { color: "#dc2626", fontSize: 14, marginTop: 10, textAlign: "center" },
@@ -84,5 +84,5 @@ export const styles = StyleSheet.create({
   },
   backToLoginText: { color: "#111827", fontSize: 14, fontWeight: "600" },
 
-  footerNote: { textAlign: "center", marginTop: 18, color: "#9ca3af", fontSize: 12 },
+  footerNote: { textAlign: "center", marginTop: 18, color: "#6A3B18", fontSize: 12 },
 });

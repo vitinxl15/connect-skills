@@ -131,7 +131,7 @@ export function Login() {
               {loading ? (
                 <ActivityIndicator color="#fff" />
               ) : (
-                <TouchableOpacity onPress={() => router.push("/(tabs)/home")}>
+                <TouchableOpacity onPress={() => router.push("./(tabs)/home")}>
                 <Text style={styles.signInButtonText}>Entrar</Text>
 
 
